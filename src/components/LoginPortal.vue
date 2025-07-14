@@ -5,20 +5,20 @@
       <!-- 环绕文字（SVG弧形） -->
       <svg class="logo-arc-text" width="340" height="220">
         <defs>
-          <path id="arc-top" d="M40,140 A130,130 0 0,1 300,140" fill="none" />
-          <path id="arc-bottom" d="M60,170 A110,110 0 0,0 280,170" fill="none" />
+          <path id="arc-top" d="M40, 300 A130,220 0 0,1 300,300" fill="none" />
+          <path id="arc-bottom" d="M60,180 A110,110 0 0,0 280,180" fill="none" />
         </defs>
-        <text fill="#663311" font-size="32" font-family="'Merriweather', serif" font-weight="bold">
+        <text fill="#470024" font-size="32" font-family="'ReadexPro'" font-weight="bold">
           <textPath xlink:href="#arc-top" startOffset="50%" text-anchor="middle">WISDOMWEB</textPath>
         </text>
-        <text fill="#663311" font-size="18" font-family="'Merriweather', serif">
+        <text fill="#470024" font-size="18" font-family="'ReadexPro'">
           <textPath xlink:href="#arc-bottom" startOffset="50%" text-anchor="middle">CONNECTING KNOWLEDGE SEAMLESSLY</textPath>
         </text>
       </svg>
       <!-- logo主体 -->
       <div class="logo-core">
         <div class="database" ref="databaseTop" :style="{ backgroundColor: databaseColor }"></div>
-        <div class="database" ref="databaseMiddle" :style="{ backgroundColor: databaseColor }"></div>
+        <div class="database" ref="databaseMiddle" :style="{ backgroundColor: databaseColor_white }"></div>
         <div class="database" ref="databaseBottom" :style="{ backgroundColor: databaseColor }"></div>
         <div class="deco-star" ref="starLeft"></div>
         <div class="deco-star" ref="starRight"></div>
@@ -26,46 +26,48 @@
     </div>
     <!-- 登录和注册按钮容器，初始隐藏，LOGO 上移后显示 -->
     <div class="btn-container" ref="btnContainer">
-      <button class="portal-btn" ref="loginBtn" @click="showLoginModal =!showLoginModal">登录</button>
-      <button class="portal-btn" ref="registerBtn" @click="showRegisterModal =!showRegisterModal">注册</button>
+      <button class="portal-btn" ref="loginBtn" @click="showLoginModal =!showLoginModal">Login</button>
+      <button class="portal-btn" ref="registerBtn" @click="showRegisterModal =!showRegisterModal">Register</button>
     </div>
-    <!-- 登录弹窗 -->
-    <transition name="modal">
-      <div class="modal-mask" v-if="showLoginModal">
-        <div class="modal-container">
-          <div class="modal-header">
-            <h3>登录</h3>
-          </div>
-          <div class="modal-body">
-            <p>用户名：<input type="text" /></p>
-            <p>密码：<input type="password" /></p>
-          </div>
-          <div class="modal-footer">
-            <button class="modal-btn" @click="showLoginModal =!showLoginModal">取消</button>
-            <button class="modal-btn" @click="handleLogin">确认登录</button>
-          </div>
-        </div>
+<!-- 登录弹窗 -->
+<transition name="modal">
+  <div class="modal-mask" v-if="showLoginModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Login</h3>
       </div>
-    </transition>
-    <!-- 注册弹窗 -->
-    <transition name="modal">
-      <div class="modal-mask" v-if="showRegisterModal">
-        <div class="modal-container">
-          <div class="modal-header">
-            <h3>注册</h3>
-          </div>
-          <div class="modal-body">
-            <p>用户名：<input type="text" /></p>
-            <p>密码：<input type="password" /></p>
-            <p>确认密码：<input type="password" /></p>
-          </div>
-          <div class="modal-footer">
-            <button class="modal-btn" @click="showRegisterModal =!showRegisterModal">取消</button>
-            <button class="modal-btn" @click="handleRegister">确认注册</button>
-          </div>
-        </div>
+      <div class="modal-body">
+        <p><input type="text" placeholder="Username" /></p>
+        <p><input type="password" placeholder="Password" /></p>
       </div>
-    </transition>
+      <div class="modal-footer">
+        <button class="modal-btn" @click="showLoginModal = false">Cancel</button>
+        <button class="modal-btn" @click="handleLogin">Login</button>
+      </div>
+    </div>
+  </div>
+</transition>
+
+<!-- 注册弹窗 -->
+<transition name="modal">
+  <div class="modal-mask" v-if="showRegisterModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Register</h3>
+      </div>
+      <div class="modal-body">
+        <p><input type="text" placeholder="Username" /></p>
+        <p><input type="email" placeholder="Email" /></p>
+        <p><input type="password" placeholder="Password" /></p>
+        <p><input type="password" placeholder="Confirmed Password" /></p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn" @click="showRegisterModal = false">Cancel</button>
+        <button class="modal-btn" @click="handleRegister">Register</button>
+      </div>
+    </div>
+  </div>
+</transition>
   </div>
 </template>
 
@@ -76,6 +78,7 @@ import { ref, onMounted } from 'vue';
 const showLoginModal = ref(false);
 const showRegisterModal = ref(false);
 const databaseColor = ref('#000'); // 数据库图形颜色，匹配 logo 黑色
+const databaseColor_white = ref('#470024'); // 数据库图形颜色，匹配 logo 黑色
 const logoContainer = ref(null);
 const databaseTop = ref(null);
 const databaseMiddle = ref(null);
@@ -185,8 +188,8 @@ function handleRegister() {
   align-items: center;
   justify-content: center;
   width: 340px;
-  height: 40vh;
-  margin-bottom: 10px;
+  height: 34vh;
+  margin-bottom: 0px;
   /* scale 由 gsap 控制 */
 }
 .logo-arc-text {
@@ -197,14 +200,11 @@ function handleRegister() {
   width: 100%;
   height: 100%;
   z-index: 2;
-  align-items: center;
-  justify-content: center;
-  display: flex;
 }
 .logo-core {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 57%;
   transform: translate(-50%, -50%);
   width: 120px;
   height: 160px;
@@ -237,7 +237,7 @@ function handleRegister() {
   right: -38px;
 }
 .btn-container {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 .portal-btn {
   background-color: #663311;
@@ -247,7 +247,8 @@ function handleRegister() {
   margin: 0 18px;
   border-radius: 24px;
   font-size: 1.2rem;
-  font-family: 'Merriweather', serif;
+  font-family: 'ReadexPro', serif;
+  width: 130px; 
   cursor: pointer;
   box-shadow: 0 2px 8px #0001;
   transition: background 0.2s, transform 0.2s;
@@ -264,49 +265,97 @@ function handleRegister() {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* 更深的遮罩 */
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .modal-container {
-  width: 300px;
+  width: 400px; /* 更宽 */
+  max-width: 90%; /* 响应式 */
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 12px; /* 更大的圆角 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 更强的阴影 */
   overflow: hidden;
+  font-family: 'ReadexPro', Arial, sans-serif; /* 更现代的字体 */
+  justify-content: center;
+  align-items: center;
 }
-.modal-header,
-.modal-footer {
-  padding: 10px;
-  background-color: #f5f5f5;
+
+.modal-header {
+  padding: 20px;
+  background-color: #fff; /* 白色背景 */
+  border-bottom: 1px solid #eaeaea; /* 底部边框 */
 }
+
 .modal-header h3 {
   margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333; /* 深灰色文字 */
 }
+
 .modal-body {
-  padding: 15px;
+  padding: 20px;
 }
+
+.modal-body p {
+  margin-bottom: 15px;
+  margin-right: 15px
+}
+
+.modal-body input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  background-color: #f9f9f9; /* 浅灰色背景 */
+  border-top: 1px solid #eaeaea; /* 顶部边框 */
+  display: flex;
+  justify-content: flex-end; /* 按钮右对齐 */
+}
+
 .modal-btn {
-  margin-right: 10px;
-  padding: 5px 10px;
+  margin-left: 10px; /* 按钮间距 */
+  padding: 8px 16px;
   border: none;
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'ReadexPro';
+  transition: background-color 0.2s;
 }
+
 .modal-btn:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
+
+/* 取消按钮样式 */
+.modal-btn:first-child {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* 确认按钮样式 */
+.modal-btn:last-child {
+  background-color: #000; /* 黑色按钮 */
+  color: #fff;
+}
+
+/* 过渡动画 */
 .modal-enter-active,
 .modal-leave-active {
   transition: opacity 0.3s ease;
 }
+
 .modal-enter-from,
 .modal-leave-to {
   opacity: 0;
-}
-.modal-enter-to,
-.modal-leave-from {
-  opacity: 1;
 }
 </style>
