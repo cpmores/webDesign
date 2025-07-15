@@ -1,11 +1,13 @@
 <script setup>
+import WebGLWaveBg from './components/WebGLWaveBg.vue';
 import LoginPortal from './views/LoginPortal.vue'
 import MainView from './views/MainView.vue';
 </script>
 
 <template>
-    <!-- <MainView/> -->
-  <LoginPortal />
+    <WebGLWaveBg/>
+    <MainView/>
+  <!-- <LoginPortal /> -->
 </template>
 
 <style scoped>

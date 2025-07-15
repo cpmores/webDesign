@@ -13,7 +13,7 @@
           @focus="$emit('search-focus')"
           @blur="$emit('hide-suggestions')"
           type="text"
-          placeholder="输入网址、标题、标签进行搜索或添加收藏..."
+          placeholder="Input"
           class="search-input"
         />
       </div>
@@ -130,6 +130,7 @@ export default {
   margin-right: 10px;
   font-size: 1.1rem;
   font-weight: 600;
+  color: whitesmoke;
   font-family: 'ReadexPro', sans-serif;
 }
 
@@ -138,6 +139,8 @@ export default {
   border: none;
   width: 100%;
   font-size: 1.5rem;
+  font-family: 'ReadexPro',sans-serif;
+  color: whitesmoke;
   /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   background: transparent;
   outline: none;
@@ -172,9 +175,12 @@ export default {
   padding: 8px 12px;
   border: 1px solid grey;
   /* border-radius: 6px; */
-  background: transparent;
-  color: #3E4043;
+  border: 1px solid #000;    /* 黑色边框 */
+  background: #fff;          /* 白色背景 */
+  color: #000;  
+  /* color: whitesmoke; */
   cursor: pointer;
+  margin-right: 20px;
   outline: none;
   font-size: 1rem;
   font-weight: 600;
@@ -288,7 +294,7 @@ export default {
   top: 3px;
   padding: 10px 20px;
   background: transparent;
-  color: black;
+  color: whitesmoke;
   border: none;
   /* border-radius: 20px; */
   cursor: pointer;
@@ -304,7 +310,7 @@ export default {
   left: 12ex;
   top: 3px;
   background: transparent;
-  color: #722F37;
+  color: whitesmoke;
   border: none;
   /* border-radius: 25px; */
   cursor: pointer;
