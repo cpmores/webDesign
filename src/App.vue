@@ -1,8 +1,10 @@
 <script setup>
-import LoginPortal from './components/LoginPortal.vue'
+import LoginPortal from './views/LoginPortal.vue'
+import MainView from './views/MainView.vue';
 </script>
 
 <template>
+    <!-- <MainView/> -->
   <LoginPortal />
 </template>
 
