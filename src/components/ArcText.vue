@@ -1,5 +1,5 @@
 <template>
-  <svg class="logo-arc-text" width="340" height="220">
+  <svg class="logo-arc-text" width="340" height="220" viewBox="0 0 340 370" preserveAspectRatio="xMidYMid meet">
     <defs>
       <path id="arc-top" d="M40, 330 A130,240 0 0,1 300,330" fill="none" />
       <path id="arc-bottom" d="M60,190 A110,110 0 0,0 280,190" fill="none" />
@@ -18,13 +18,14 @@
 
 <style scoped>
 .logo-arc-text {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
   pointer-events: none;
   width: 100%;
   height: 100%;
   z-index: 2;
+  margin: 0 auto;
 }
 
 .logo-arc-text text {
@@ -37,7 +38,7 @@
 }
 
 .logo-arc-text text:nth-child(2) {
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 @keyframes fadeIn {

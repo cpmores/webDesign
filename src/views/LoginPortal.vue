@@ -56,6 +56,7 @@ onMounted(() => {
   height: 100vh;
   background-color: #fdf1e9;
   display: flex;
+  gap: 10vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -70,13 +71,13 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   width: 340px;
-  height: 34vh;
+  height: 340px;
   margin-bottom: 0px;
 }
 
 .logo-core {
   position: absolute;
-  top: 13vh;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1; /* Place behind ArcText to avoid overlap */
